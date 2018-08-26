@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1 class="page-header">Tests</h1>
+
+    <ul class="list-unstyled">
+        {% for test in tests %}
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                 <a href="/status/test/{{ test.test_uuid }}">{{ test.test }} - {{ test.client_uuid[:4] }}... - {{ datetime.fromtimestamp(test.begin) }} {% if test.result %}<span class="label label-info">result</span>{% endif %}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

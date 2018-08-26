@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <script src="/static/jquery.flot.min.js"></script>
+    <script src="/static/main.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container test-{{ test.test }}">
+        <h1 class="page-header">Test</h1>
+
+        <div class="col-xs-12 col-sm-10">
+            <h3 class="text-center">Details</h3>
+            <table class="table table-striped" id="results-table">
+                <tbody>
+                {% for key,value in test.items() %}
+                <tr id="{{ key }}">
+                    <td>{{ key }}</td>
+                    <td>{{ value | dump_json_if_dict }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

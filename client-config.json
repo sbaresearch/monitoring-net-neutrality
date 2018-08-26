@@ -1,0 +1,24 @@
+{
+  "client": {
+    "uuid" : "client_X",
+    "poll_interval_seconds" : 120
+  },
+  "testserver": {
+    "host" : "10.10.10.10",
+    "port" : "8082",
+    "protocol" : "http",
+    "enable_client_ip_handling" : true,
+    "client_ip_directory" : "/home/measurement/client_ips/"
+  },
+  "dumpcap": {
+    "path_to_executable" : "/usr/bin/dumpcap",
+    "save_location" : "/tmp/pcaps",
+    "interface" : "wifi"
+  },
+  "tshark": {
+    "path_to_executable" : "/usr/bin/tshark"
+  },
+  "ooniprobe": {
+    "path_to_executable" : "/usr/bin/ooniprobe"
+  }
+}

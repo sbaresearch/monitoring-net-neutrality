@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <script src="/static/jquery.flot.min.js"></script>
+    <script src="/static/main.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="page-header">Clients</h1>
+
+        <div class="col-xs-12 col-sm-12">
+            <h3 class="text-center">Clients</h3>
+            <table class="table table-striped" id="results-table">
+		        <thead><tr><th>Client</th><th>Last Result (UTC)</th><th>Last IP Info (Local Time)</th><th>IP</th></tr></thead>
+                <tbody>
+                {% for c in clients %}
+                <tr>
+		            <td>{{ c }}</td>
+                    <td>{{ last_test[c].test }} - {{ datetime.fromtimestamp(last_test[c].begin) }} </td>
+                    <td>{{ datetime.fromtimestamp(mtime[c]) }}</td>
+                    <td>{{ ip[c] }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <h3 class="text-center">Metrics</h3>
+            <table class="table table-striped" id="results-table">
+		        <thead>
+                <tr>
+                    <th>Metric</th>
+                    {% for c in clients %}
+                    <th>{{ c }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for m, value in metrics.items() %}
+                <tr>
+		            <td>{{ m }}</td>
+                    {% for c in clients %}
+                    <td>{{ value[c] }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

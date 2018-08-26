@@ -1,0 +1,33 @@
+- options:
+    annotations: null
+    bouncer: null
+    collector: null
+    no-collector: 0
+    no-geoip: 0
+    no-yamloo: 0
+    reportfile: null
+    subargs: &id001 []
+    test_file: manipulation/http_invalid_request_line
+    verbose: 0
+- options:
+    annotations: null
+    bouncer: null
+    collector: null
+    no-collector: 0
+    no-geoip: 0
+    no-yamloo: 0
+    reportfile: null
+    subargs: *id001
+    test_file: manipulation/http_header_field_manipulation
+    verbose: 0
+- options:
+    annotations: null
+    bouncer: null
+    collector: null
+    no-collector: 0
+    no-geoip: 0
+    no-yamloo: 0
+    reportfile: null
+    subargs: [-f, ../deck/citizenlab-urls-global.txt]
+    test_file: blocking/web_connectivity
+    verbose: 0

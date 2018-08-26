@@ -1,0 +1,269 @@
+{
+  "server": {
+    "host" : "10.10.10.10",
+    "port" : 8082
+  },
+  "mongo": {
+    "host" : "localhost",
+    "port" : 27017,
+    "database": "test-database",
+    "test-collection": "tests"
+  },
+  "enable_client_ip_handling" : true,
+  "client_ip_directory": "/home/measurement/client_ips/",
+  "tests": {
+    "cm7" : {
+      "schedule" : "0 * * * * ",
+      "duration_seconds" : 170,
+      "port" : 80,
+      "host" : "128.130.204.37",
+      "requests": [
+            {
+                "resource" : "GET /{test_uuid}/image1.bmp HTTP/1.1"
+            },
+            {
+                "resource": "GET /{test_uuid}/image1.bmp HTTP/1.1"
+            },
+            {
+                "resource": "GET /{test_uuid}/image2.jpg HTTP/1.1",
+                "repeat": 3
+            },
+            {
+                "resource" : "GET /{test_uuid}/faultyResponse HTTP/1.1"
+            },
+            {
+                "resource" : "GET /videoplayback?mime=video/webm&dur=610.640&upn=q_PY3To1fWI HTTP/1.1",
+                "header": [
+                    "Host: r1---sn-4g5edne7.googlevideo.com",
+                    "User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0",
+                    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                    "Accept-Language: de,en-US;q=0.7,en;q=0.3",
+                    "Accept-Encoding: gzip, deflate, br",
+                    "X-Test: {test_uuid}"
+                    ]
+            }
+        ]
+    },
+    "vs7": {
+      "schedule" : "3 * * * * ",
+      "duration_seconds" : 45,
+      "port" : 80,
+      "host" : "128.130.204.37",
+      "requests": [
+        "GET /{test_uuid}/eicar.exe HTTP/1.1"
+      ]
+    },
+    "http7" : {
+      "schedule" : "4 * * * * ",
+      "duration_seconds" : 45,
+      "port" : 80,
+      "host" : "128.130.204.37",
+      "requests": [
+        "GE/T /{test_uuid}/faultyResponse HTTP/1.1"
+      ]
+    },
+    "tcp4" : {
+      "schedule" : "5 * * * * ",
+      "duration_seconds" : 110,
+      "host" : "128.130.204.37",
+      "ports" : [
+        80,
+        220,
+        443,
+        554,
+        1725,
+        1214,
+        5060,
+        6881,
+        8333,
+        48123
+      ],
+      "pings" : 10
+    },
+    "udp4": {
+      "schedule" : "7 * * * * ",
+      "duration_seconds" : 110,
+      "host": "128.130.204.37",
+      "ports": [
+        1725,
+        5060,
+        6881,
+        9987,
+        48123
+      ],
+      "packets": 10
+    },
+    "ndns7": {
+      "schedule" : "37 * * * * ",
+      "duration_seconds" : 50,
+      "requests": [
+            {
+                "host": "www.orf.at"
+            },
+            {
+                "host": "www.123hjaf9hu32iufhuihoafine.com"
+            }
+        ]
+    },
+    "bdns7": {
+      "schedule" : "38 * * * * ",
+      "duration_seconds" : 50,
+      "requests": [
+            {
+                "host": "www.thepiratebay.se"
+            },
+            {
+                "host": "www.kinox.to"
+            },
+            {
+                "host": "www.kinox.to",
+                "nameservers": ["8.8.8.8"]
+            }
+        ]
+    },
+    "syn4": {
+      "schedule" : "29 * * * * ",
+      "duration_seconds" : 50,
+      "host": "128.130.204.37",
+      "port": 443,
+      "count": 200,
+      "source_port": {
+        "min": 40234,
+        "max": 41453
+      }
+    },
+    "stls7": {
+      "schedule" : "30 * * * * ",
+      "duration_seconds" : 50,
+      "host": "93.189.26.18",
+      "ports": [
+        25
+      ],
+      "test_uuid": "{test_uuid}",
+      "valid_response": true
+    },
+    "smtp7": {
+      "schedule" : "31 * * * * ",
+      "duration_seconds" : 50,
+      "host": "93.189.26.18",
+      "ports": [
+        25
+      ],
+      "test_uuid": "{test_uuid}",
+      "valid_response": false
+    },
+    "pop37": {
+      "schedule" : "32 * * * * ",
+      "duration_seconds" : 50,
+      "host": "128.130.204.37",
+      "ports": [
+        110,
+        8110
+      ],
+      "test_uuid": "{test_uuid}"
+    },
+    "trac3": {
+      "schedule": "39 * * * * ",
+      "duration_seconds": 50,
+      "requests": [
+        {
+          "host": "www.orf.at"
+        },
+        {
+          "host": "www.google.at"
+        },
+        {
+          "host": "www.derstandard.at"
+        },
+        {
+          "host": "www.123hjaf9hu32iufhuihoafine.com"
+        }
+      ]
+    },
+    "tls4": {
+      "host": "128.130.204.37",
+      "schedule": "36 * * * * ",
+      "duration_seconds": 50,
+      "test_uuid": "{test_uuid}",
+      "host": "128.130.204.37",
+      "port": 443
+    },
+    "tcps4": {
+      "host": "128.130.204.37",
+      "schedule": "9 * * * * ",
+      "duration_seconds": 590,
+      "ports": [
+        {
+          "port": 80
+        },
+        {
+          "port": 443
+        },
+        {
+          "port": 6881
+        },
+        {
+          "port": 48123
+        }
+      ],
+      "http_headers" : [],
+      "packet_size": 4096,
+      "test_duration_ms": 12000,
+      "concurrent": false,
+      "test_uuid": "{test_uuid}"
+    },
+    "mm7": {
+      "host": "128.130.204.37",
+      "schedule": "19 * * * * ",
+      "duration_seconds": 590,
+      "ports": [
+        {
+          "port": 80,
+          "answer_with" : 0,
+          "request_with" : 1
+        },
+        {
+          "port": 48123,
+          "answer_with" : 0,
+          "request_with" : 1
+        }
+      ],
+      "http_headers": [
+            {
+                "id": 0,
+                "header": "HTTP/1.1 200 OK\r\nAccept-Ranges: bytes\r\nAccess-Control-Allow-Credentials: true\r\nAlt-Svc: quic=\":443\"; ma=2592000\r\nAlternate-Protocol: 443:quic\r\nCache-Control: private, max-age=21293\r\nConnection: keep-alive\r\nContent-Length: 1718030000\r\nContent-Type: video/webm\r\n\r\n"
+            },
+            {
+                "id": 1,
+                "header": "GET /videoplayback?mime=video/webm&dur=610.640&upn=q_PY3To1fWI HTTP/1.1\r\nHost: r1---sn-4g5edne7.googlevideo.com\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\nAccept-Language: de,en-US;q=0.7,en;q=0.3\r\nAccept-Encoding: gzip, deflate, br\r\n\r\n"
+            }
+        ],
+      "packet_size": 4096,
+      "test_duration_ms": 12000,
+      "concurrent": false,
+      "test_uuid": "{test_uuid}"
+    },
+    "voip7":  {
+        "schedule": "33 * * * * ",
+        "duration_seconds": 170,
+        "host": "128.130.204.37",
+        "ports": [2222],
+        "test_uuid": "{test_uuid}",
+        "replay_pcap": "./metrics/voip7/rtpstream.pcap",
+        "call_duration_ms": 14000
+    },
+    "ooni7":  {
+        "schedule": "40 * * * * ",
+        "duration_seconds": 590,
+        "test_uuid": "{test_uuid}"
+    }
+  },
+  "dumpcap": {
+    "path_to_executable" : "/usr/bin/dumpcap",
+    "save_location" : "/home/measurement/pcaps/",
+    "interface" : "eno1"
+  },
+  "results": {
+    "save_location" : "/home/measurement/results/"
+  }
+}

@@ -1,0 +1,20 @@
+# Web Framework
+bottle
+# Web Templating
+jinja2
+
+# PIP requirements file
+scapy-python3
+dill
+requests
+dnspython
+croniter
+watchdog
+
+# https://stackoverflow.com/questions/2817869/error-unable-to-find-vcvarsall-bat - requires
+# http://www.lfd.uci.edu/~gohlke/pythonlibs/#netifaces
+# >pip install netifaces-0.10.4-cp35-none-win32.whl
+netifaces
+
+# For database connectivity
+pymongo
